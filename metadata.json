@@ -1,0 +1,14 @@
+{
+    "name": "Signatures",
+    "uri": "https://github.com/pupi1985/q2a-signatures",
+    "description": "Adds signatures to posts",
+    "version": "3.4.1",
+    "date": "2024-06-11",
+    "author": "NoahY (extended by pupi1985)",
+    "author_uri": "https://www.question2answer.org/qa/user/pupi1985",
+    "license": "GPLv3",
+    "update_uri": "https://raw.githubusercontent.com/pupi1985/q2a-signatures/master/metadata.json",
+    "min_q2a": "1.7.0",
+    "min_php": "7.4.0",
+    "load_order": "after_db_init"
+}

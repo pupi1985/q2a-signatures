@@ -24,8 +24,6 @@ function qa_get_request_content()
         $qa_content['form_profile']['fields']['permits']['value'] = $ov;
     }
 
-    $qa_content['user_signature_form'] = array();
-
     $userid = @$qa_content['raw']['userid'];
     if (!$userid) {
         return $qa_content;
@@ -112,7 +110,7 @@ function qa_get_request_content()
     } else if (qa_opt('signatures_profile_enable')) {
         $signatureRecord = getSignatureForUserId($userid);
 
-        if (empty($signatureRecord)) {
+        if (empty($signatureRecord['signature'])) {
             return $qa_content;
         }
 

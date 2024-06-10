@@ -43,23 +43,25 @@ class qa_html_theme_layer extends qa_html_theme_base
         }
         if (qa_opt('signatures_enable')) {
             if ($this->template === 'user' && isset($this->content['form_activity']) && !qa_get('tab')) {
-                $sig_form = $this->content['user_signature_form']; // from overrides
+                $sig_form = $this->content['user_signature_form'] ?? null; // from overrides
 
-                if (isset($this->content['q_list'])) {
-                    $keys = array_keys($this->content);
-                    $vals = array_values($this->content);
+                if (isset($sig_form)) {
+                    if (isset($this->content['q_list'])) {
+                        $keys = array_keys($this->content);
+                        $vals = array_values($this->content);
 
-                    $insertBefore = array_search('q_list', $keys);
+                        $insertBefore = array_search('q_list', $keys);
 
-                    $keys2 = array_splice($keys, $insertBefore);
-                    $vals2 = array_splice($vals, $insertBefore);
+                        $keys2 = array_splice($keys, $insertBefore);
+                        $vals2 = array_splice($vals, $insertBefore);
 
-                    $keys[] = 'form-signature';
-                    $vals[] = $sig_form;
+                        $keys[] = 'form-signature';
+                        $vals[] = $sig_form;
 
-                    $this->content = array_merge(array_combine($keys, $vals), array_combine($keys2, $vals2));
-                } else {
-                    $this->content['form-signature'] = $sig_form;
+                        $this->content = array_merge(array_combine($keys, $vals), array_combine($keys2, $vals2));
+                    } else {
+                        $this->content['form-signature'] = $sig_form;
+                    }
                 }
             }
         }
